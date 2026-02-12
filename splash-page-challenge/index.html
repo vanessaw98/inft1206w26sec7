@@ -10,17 +10,109 @@
     Description: Splash page dedicated to bugs with multimedia and embedding
     -->
     <link href="style.css" rel="stylesheet" />
+    <style>
+        /*header & body */
+        body {
+  font: 1.2em / 1.5 system-ui;
+  margin: 0 auto;
+  width: 90%;
+  min-width: 800px;
+  max-width: 1200px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.8em;
+}
+
+/* nav menu */
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  flex: auto;
+}
+
+nav a {
+  font-size: 1.2em;
+  padding: 0 20px;
+}
+
+/* General link styles */
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* header section layout */
+
+header section {
+  display: grid;
+  grid-template-areas:
+    "heading heading"
+    "text video"
+    "text video";
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+h1 {
+  grid-area: heading;
+}
+
+header p {
+  grid-area: text;
+  margin: 0;
+}
+
+video {
+  grid-area: video;
+  width: 100%;
+  border: 1px solid black;
+}
+
+/* image floats */
+
+figure {
+  float: right;
+  margin-left: 20px;
+  padding: 20px;
+  background: orange;
+  border: 1px solid black;
+}
+
+figcaption {
+  font-size: 0.6em;
+}
+    </style>
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><a href="#beetles">Beetles</a></li>
-          <li><a href="#true_bugs">True bugs</a></li>
-          <li><a href="#butterflies_moths">Butterflies and moths</a></li>
-          <li><a href="#flies_mosquitos">Flies and mosquitos</a></li>
-          <li><a href="#bees_wasps_ants">Bees, wasps, and ants</a></li>
-          <li><a href="#spiders">Spiders</a></li>
+          <li><a href="#beetles">&#x1F41E; Beetles</a></li>
+          <li><a href="#true_bugs">&#x1FAB2; True bugs</a></li>
+          <li><a href="#butterflies_moths">&#x1F98B; Butterflies and moths</a></li>
+          <li><a href="#flies_mosquitos">&#x1F99F; Flies and mosquitos</a></li>
+          <li><a href="#bees_wasps_ants">&#x1F41D; Bees, wasps, and ants</a></li>
+          <li><a href="#spiders">&#x1F577; Spiders</a></li>
         </ul>
       </nav>
       <section>
@@ -37,7 +129,7 @@
     </header>
     <main>
       <section id="beetles">
-        <h2>Beetles (Coleoptera)</h2>
+        <h2>&#x1F41E; Beetles (Coleoptera)</h2>
 
         <p>
           Beetles make up the largest order of insects, with more than
@@ -66,7 +158,7 @@
         </p>
       </section>
       <section id="true_bugs">
-        <h2>True Bugs (Hemiptera)</h2>
+        <h2>&#x1FAB2; True Bugs (Hemiptera)</h2>
 
         <p>
           True bugs include a wide range of insects such as stink bugs,
@@ -106,7 +198,7 @@
         </p>
       </section>
       <section id="butterflies_moths">
-        <h2>Butterflies & Moths (Lepidoptera)</h2>
+        <h2>&#x1F98B; Butterflies & Moths (Lepidoptera)</h2>
 
         <p>
           Butterflies and moths are some of the most recognizable insects
@@ -136,7 +228,7 @@
         </p>
       </section>
       <section id="flies_mosquitos">
-        <h2>Flies & Mosquitoes (Diptera)</h2>
+        <h2>&#x1F99F; Flies & Mosquitoes (Diptera)</h2>
 
         <p>
           Flies and mosquitoes belong to the order Diptera, meaning “two
@@ -172,7 +264,7 @@
         </p>
       </section>
       <section id="bees_wasps_ants">
-        <h2>Bees, Wasps, Ants (Hymenoptera)</h2>
+        <h2>&#x1F41D; Bees, Wasps, Ants (Hymenoptera)</h2>
 
         <p>
           Bees, wasps, and ants are a diverse group known for their complex
@@ -202,7 +294,7 @@
         </p>
       </section>
       <section id="spiders">
-        <h2>Spiders (Araneae)</h2>
+        <h2>&#x1F577; Spiders (Araneae)</h2>
 
         <p>
           Spiders are arachnids, not insects, and are easily distinguished by
