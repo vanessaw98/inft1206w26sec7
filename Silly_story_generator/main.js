@@ -1,51 +1,44 @@
-// Complete variable definitions and random functions
-
-const customName = document.getElementById("custom-name");
-const generateBtn = document.querySelector(".generate");
-const story = document.querySelector(".story");
+const customName = document.getElementById('customname');
+const randomize = document.querySelector('.randomize');
+const story = document.querySelector('.story');
 
 function randomValueFromArray(array) {
   const random = Math.floor(Math.random() * array.length);
   return array[random];
 }
 
-// Raw text strings
+let storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
+let insertX = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
+let insertY = ['the soup kitchen', 'Disneyland', 'the White House'];
+let insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away'];
 
-// Willy the Goblin
-// Big Daddy
-// Father Christmas
+randomize.addEventListener('click', result);
 
-// the soup kitchen
-// Disneyland
-// the White House
+function result() {
+  let newStory = storyText;
 
-// spontaneously combusted
-// melted into a puddle on the sidewalk
-// turned into a slug and slithered away
+  const xItem = randomValueFromArray(insertX);
+  const yItem = randomValueFromArray(insertY);
+  const zItem = randomValueFromArray(insertZ);
 
-// Partial return random string function
+  newStory = newStory.replaceAll(':insertx:', xItem);
+  newStory = newStory.replace(':inserty:', yItem);
+  newStory = newStory.replace(':insertz:', zItem);
 
-function returnRandomStoryString() {
-  // It was 94 Fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.
-
-  return storyText;
-}
-
-// Event listener and partial generate function definition
-
-generateBtn.addEventListener("click", generateStory);
-
-function generateStory() {
-  if (customName.value !== "") {
+  if (customName.value !== '') {
     const name = customName.value;
+    newStory = newStory.replace('Bob', name);
   }
 
-  if (document.getElementById("uk").checked) {
-    const weight = Math.round(300);
-    const temperature = Math.round(94);
+  const uk = document.getElementById('uk');
+  if (uk.checked) {
+    const weight = Math.round(300 * 0.0714286) + ' stone';
+    const temperature = Math.round((94 - 32) * 5 / 9) + ' centigrade';
+
+    newStory = newStory.replace('94 fahrenheit', temperature);
+    newStory = newStory.replace('300 pounds', weight);
   }
 
-  // TODO: replace "" with the correct expression
-  story.textContent = "";
-  story.style.visibility = "visible";
+  story.textContent = newStory;
+  story.style.visibility = 'visible';
 }
