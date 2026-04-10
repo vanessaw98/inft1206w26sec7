@@ -1,44 +1,55 @@
-const customName = document.getElementById('customname');
-const randomize = document.querySelector('.randomize');
-const story = document.querySelector('.story');
+// references to the input field, button and story paragraph
 
+const customName = document.getElementById("customname");
+const generateBtn = document.querySelector(".randomize");
+const story = document.querySelector(".story");
+
+// returns random item from array
 function randomValueFromArray(array) {
   const random = Math.floor(Math.random() * array.length);
   return array[random];
 }
 
-let storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
-let insertX = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
-let insertY = ['the soup kitchen', 'Disneyland', 'the White House'];
-let insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away'];
+// arrays containing possible characters/places/events
+const characters = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
+const places = ["the soup kitchen", "Disneyland", "the White House"];
+const events = [
+  "spontaneously combusted",
+  "melted into a puddle on the sidewalk",
+  "turned into a slug and slithered away",
+];
 
-randomize.addEventListener('click', result);
 
-function result() {
-  let newStory = storyText;
+// make complete random story string(s)
+function returnRandomStoryString() {
+  const randomCharacter = randomValueFromArray(characters);
+  const randomPlace = randomValueFromArray(places);
+  const randomEvent = randomValueFromArray(events);
+  // base story template  
+  let storyText = `It was 94 Fahrenheit outside, so ${randomCharacter} went for a walk. When they got to ${randomPlace}, they stared in horror for a few moments, then ${randomEvent}. Bob saw the whole thing, but was not surprised — ${randomCharacter} weighs 300 pounds, and it was a hot day.`;
 
-  const xItem = randomValueFromArray(insertX);
-  const yItem = randomValueFromArray(insertY);
-  const zItem = randomValueFromArray(insertZ);
-
-  newStory = newStory.replaceAll(':insertx:', xItem);
-  newStory = newStory.replace(':inserty:', yItem);
-  newStory = newStory.replace(':insertz:', zItem);
-
-  if (customName.value !== '') {
-    const name = customName.value;
-    newStory = newStory.replace('Bob', name);
-  }
-
-  const uk = document.getElementById('uk');
-  if (uk.checked) {
-    const weight = Math.round(300 * 0.0714286) + ' stone';
-    const temperature = Math.round((94 - 32) * 5 / 9) + ' centigrade';
-
-    newStory = newStory.replace('94 fahrenheit', temperature);
-    newStory = newStory.replace('300 pounds', weight);
-  }
-
-  story.textContent = newStory;
-  story.style.visibility = 'visible';
+  return storyText;
 }
+
+// generates new story when clicked
+generateBtn.addEventListener("click", generateStory);
+
+function generateStory() {
+  let newStory = returnRandomStoryString();
+  // replace with custom name
+  if (customName.value !== "") {
+    const name = customName.value;
+    newStory = newStory.replace("Bob", name);
+  }
+  // if uk button pressed, it will convert units
+  if (document.getElementById("uk").checked) {
+    const weight = `${Math.round(300 / 14)} stone`;
+    const temperature = `${Math.round((94 - 32) * (5 / 9))} Celsius`;
+    newStory = newStory.replace("300 pounds", weight);
+    newStory = newStory.replace("94 Fahrenheit", temperature);
+  }
+  // displays story on page
+  story.textContent = newStory;
+  story.style.visibility = "visible";
+}
+
