@@ -161,39 +161,36 @@ Fixing accessibility issues of a website.
         </p>
       </aside>
 
-      <section class="comments" aria-labelledby="comments-heading">
-        <button class="show-hide" aria-expanded="false">Show comments</button>
-
-        <div class="comment-wrapper">
-          <h3 id="comments-heading">Add comment</h3>
-
-          <form class="comment-form">
-            <div class="flex-pair">
-              <label for="name">Your name:</label>
-              <input type="text" name="name" id="name" placeholder="Enter your name">
-            </div>
-
-            <div class="flex-pair">
-              <label for="comment">Your comment:</label>
-              <textarea name="comment" id="comment" placeholder="Enter your comment"></textarea>
-            </div>
-
-            <button type="submit">Submit comment</button>
-          </form>
-
-          <h3>Comments</h3>
-
-          <ul class="comment-container">
-            <li>
-              <p><strong>Bob Fossil</strong></p>
-              <p>
-                Oh I am so glad you taught me all about the big brown angry guys in the woods...
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </article>
+        <section class="comments">
+          <div class="show-hide" tabindex="0">Show comments</div>
+          <div class="comment-wrapper">
+            <form class="comment-form">
+              <h2 tabindex="0">Add comment</h2>
+              <div class="flex-pair">
+                <label for="name">Your name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" aria-required="true" required>
+              </div>
+              <div class="flex-pair">
+                <label for="comment">Your comment:</label>
+                <input type="text" name="comment" id="comment" placeholder="Enter your comment" aria-required="true" required>
+              </div>
+              <button>Submit comment</button>
+              
+              
+            </form> 
+            
+            <section>
+              <h2 tabindex="0">Comments</h2>
+              <ul class="comment-container">
+                <li>
+                  <p tabindex="0"><span>Author: </span>Bob Fossil</p>
+                  <p tabindex="0"><span>Comment: </span>Oh I am so glad you taught me all about the big brown angry guys in the woods. With their sniffing little noses and their bad attitudes, they can sure be a menace — I was thinking of putting them all in a truck and driving them outta here. I run a zoo, you know.</p>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </article>
 
     <aside class="secondary">
       <h2>Related</h2>
